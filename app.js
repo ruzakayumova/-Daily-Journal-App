@@ -62,6 +62,12 @@ function saveLocalNotes() {
     } else {
         notes = JSON.parse(localStorage.getItem('notes'))
     }
+
+    let myObj = {
+        date: dateInput.value,
+        title: headingInput.value,
+        text: mainInput.value
+    }
       notes.push(myObj);
       localStorage.setItem("notes", JSON.stringify(notes));
 }
