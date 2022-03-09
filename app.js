@@ -1,9 +1,12 @@
 // selectors
 const headingInput = document.getElementById('heading-input')
-const dateInput = document.getElementById('date-input')
 const mainInput = document.getElementById('main-input')
 const createBtn = document.getElementById('create-btn')
 const container = document.querySelector('.container')
+
+
+let nowDate = new Date(); 
+let date = nowDate.getFullYear()+'/'+(nowDate.getMonth()+1)+'/'+nowDate.getDate();
 
 // events
 document.addEventListener('DOMContentLoaded', getNotes)
@@ -19,7 +22,7 @@ function createNote() {
     //create div card-header
     const cardHeader = document.createElement('div')
     cardHeader.classList.add("card-header")
-    cardHeader.innerText = dateInput.value
+    cardHeader.innerText = date
     cardDiv.appendChild(cardHeader)
     
     // create div card -body
@@ -40,7 +43,6 @@ function createNote() {
     //add to localStorage
     saveLocalNotes()
 
-    dateInput.value = ""
     headingInput.value = ""
     mainInput.value = ""
 }
@@ -49,7 +51,7 @@ function createNote() {
 //Local storage
 
 let myObj = {
-    date: dateInput.value,
+    date: date,
     title: headingInput.value,
     text: mainInput.value
 }
@@ -64,7 +66,7 @@ function saveLocalNotes() {
     }
 
     let myObj = {
-        date: dateInput.value,
+        date: date,
         title: headingInput.value,
         text: mainInput.value
     }
@@ -110,4 +112,5 @@ function getNotes() {
         cardBody.appendChild(cardText)
 
     })
+
 }
