@@ -16,6 +16,10 @@ card.addEventListener('click', deleteNote)
 
 //functions
 function createNote() {
+    if(!mainInput.value) {
+        alert('Please fill in the form')
+        return false
+    }
     //create div card
     const cardDiv = document.createElement('div')
     cardDiv.classList.add("card", "shadow", "mb-3", "mt-2")
